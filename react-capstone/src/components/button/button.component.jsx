@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { BaseButton, GoogleSignInButton, InvertedButton } from "./button.styles";
 
 export const BUTTON_TYPES = {
@@ -12,27 +11,16 @@ export const ButtonMap = {
   [BUTTON_TYPES.inverted]: InvertedButton,
 };
 
-const getButton = (buttonType = BUTTON_TYPES.base) => {
-  console.log(buttonType);
-  const ButtonMap = {
+const getButton = (buttonType = BUTTON_TYPES.base) =>
+  ({
     [BUTTON_TYPES.base]: BaseButton,
     [BUTTON_TYPES.google]: GoogleSignInButton,
     [BUTTON_TYPES.inverted]: InvertedButton,
-  };
-  // console.log(ButtonMap[buttonType]);
-  return ButtonMap[buttonType];
-};
+  }[buttonType]);
 
 const Button = ({ children, buttonType, ...otherProps }) => {
-  // const CustomButton = getButton(buttonType);
-  // const CustomButton2 = ButtonMap[buttonType];
-  // console.log(CustomButton);
-  // return <CustomButton {...otherProps}>{children}</CustomButton>;
-  return (
-    <Fragment>
-      <BaseButton {...otherProps}>{children}</BaseButton>
-    </Fragment>
-  );
+  const CustomButton = getButton(buttonType);
+  return <CustomButton {...otherProps}>{children}</CustomButton>;
 };
 
 export default Button;

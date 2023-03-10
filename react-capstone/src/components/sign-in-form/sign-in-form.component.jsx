@@ -4,6 +4,7 @@ import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
 import { SignUpContainer } from "./sign-in-form.styles";
 
+import { BUTTON_TYPES } from "../button/button.component";
 const defaultformFields = {
   email: "",
   pwd: "",
@@ -53,7 +54,7 @@ const SignInForm = () => {
         <FormInput label="Password" required type="password" name="pwd" value={pwd} onChange={handleChange} />
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
-          <Button type="button" onClick={signInWithGoogle} buttonType="google">
+          <Button type="button" onClick={signInWithGoogle} buttonType={BUTTON_TYPES.google}>
             Google Sign In
           </Button>
         </div>
